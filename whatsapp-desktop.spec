@@ -7,12 +7,12 @@
 
 Summary:	WhatsApp desktop client, based on the official WhatsApp web app
 Name:		whatsapp-desktop
-Version:	0.3.3
+Version:	0.3.14
 Release:	1%{?dist}
 
 License:	MIT
-URL:		https://github.com/bcalik/Whatsapp-Desktop
-Source0:	https://github.com/bcalik/Whatsapp-Desktop/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:		https://github.com/Enrico204/Whatsapp-Desktop
+Source0:	https://github.com/Enrico204/Whatsapp-Desktop/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 
 BuildRequires:	desktop-file-utils
@@ -116,5 +116,8 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Wed Nov 29 2017 Arkady L. Shane <ashejn@russianfedora.pro> - 0.3.14-1
+- update to 0.3.14
+
 * Wed Jun  7 2017 Arkady L. Shane <ashejn@russianfedora.pro> - 0.3.3-1
 - initial build
