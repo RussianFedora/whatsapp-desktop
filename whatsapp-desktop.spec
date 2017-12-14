@@ -8,7 +8,7 @@
 Summary:	WhatsApp desktop client, based on the official WhatsApp web app
 Name:		whatsapp-desktop
 Version:	0.3.14
-Release:	1%{?dist}
+Release:	2%{?dist}
 
 License:	MIT
 URL:		https://github.com/Enrico204/Whatsapp-Desktop
@@ -54,6 +54,11 @@ mkdir -p %{buildroot}%{_libdir}/%{name}
 cp -r dist/WhatsApp-linux-x64/* %{buildroot}%{_libdir}/%{name}/
 %else
 cp -r dist/WhatsApp-linux-ia32/* %{buildroot}%{_libdir}/%{name}/
+%endif
+
+%if 0%{?fedora} < 27
+cp -r node_modules %{buildroot}%{_libdir}/%{name}/resources/app/
+rm -r %{buildroot}%{_libdir}/%{name}/resources/app/node_modules/electron
 %endif
 
 # Remove rpath
@@ -116,6 +121,9 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Wed Nov 29 2017 Arkady L. Shane <ashejn@russianfedora.pro> - 0.3.14-2
+- pack some node packages for old nodejs
+
 * Wed Nov 29 2017 Arkady L. Shane <ashejn@russianfedora.pro> - 0.3.14-1
 - update to 0.3.14
 
