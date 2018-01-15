@@ -32,18 +32,10 @@ Web, like a browser.
 %autosetup -n Whatsapp-Desktop-%{version}
 
 %build
-# Oh, NodeJS
-npm install
-
-./node_modules/.bin/electron-packager ./app "WhatsApp" --out=dist \
-	--platform=linux \
-%ifarch x86_64
-	--arch=x64 \
-%else
-	--arch=ia32 \
-%endif
-	--electron-version=0.37.3 \
-	--icon=assets/win/whatsapp.ico
+# Oh, NodeJS and Yarn, what?
+npm install yarn
+./node_modules/yarn/bin/yarn install
+./node_modules/yarn/bin/yarn run build:linux
 
 %install
 chmod -x readme.md
@@ -123,6 +115,7 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %changelog
 * Sun Jan 14 2018 Arkady L. Shane <ashejn@russianfedora.pro> - 0.4.2-1
 - update to 0.4.2
+- use yarn
 
 * Wed Nov 29 2017 Arkady L. Shane <ashejn@russianfedora.pro> - 0.3.14-2
 - pack some node packages for old nodejs
