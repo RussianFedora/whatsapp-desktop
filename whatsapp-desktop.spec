@@ -34,16 +34,13 @@ Web, like a browser.
 
 %build
 # Oh, NodeJS and Yarn, what?
-npm install yarn
-nodejs-yarn install
-
-# fix hardcoded name
-sed -i 's@yarn@nodejs-yarn@g' node_modules/electron-packager/test/prune.js
+export PATH="/usr/lib/node_modules/nodejs-yarn/bin/:$PATH"
+yarn install
 
 %ifarch x86_64
-nodejs-yarn run build:linux
+yarn run build:linux
 %else
-nodejs-yarn run build:linux32
+yarn run build:linux32
 %endif
 
 %install
