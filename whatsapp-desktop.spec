@@ -36,6 +36,10 @@ Web, like a browser.
 # Oh, NodeJS and Yarn, what?
 npm install yarn
 nodejs-yarn install
+
+# fix hardcoded name
+sed -i 's@yarn@nodejs-yarn@g' node_modules/electron-packager/test/prune.js
+
 %ifarch x86_64
 nodejs-yarn run build:linux
 %else
