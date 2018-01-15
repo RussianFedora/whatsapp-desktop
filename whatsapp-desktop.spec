@@ -42,7 +42,11 @@ chmod -x readme.md
 
 mkdir -p %{buildroot}%{_libdir}/%{name}
 
-cp -r dist/WhatsApp-linux-%{__isa_bits}/* %{buildroot}%{_libdir}/%{name}/
+%ifarch x86_64
+cp -r dist/WhatsApp-linux-x64/* %{buildroot}%{_libdir}/%{name}/
+%else
+cp -r dist/WhatsApp-linux-ia32/* %{buildroot}%{_libdir}/%{name}/
+%endif
 
 # Remove rpath
 chrpath --delete %{buildroot}%{_libdir}/%{name}/WhatsApp
