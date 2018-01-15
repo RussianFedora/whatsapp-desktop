@@ -20,6 +20,7 @@ BuildRequires:	hicolor-icon-theme
 BuildRequires:	npm >= 3.10.0
 BuildRequires:	ImageMagick
 BuildRequires:	chrpath
+BuildRequires:	nodejs-yarn
 
 %description
 This is NOT an official product. This project does not attempt to reverse
@@ -34,11 +35,11 @@ Web, like a browser.
 %build
 # Oh, NodeJS and Yarn, what?
 npm install yarn
-./node_modules/yarn/bin/yarn install
+nodejs-yarn install
 %ifarch x86_64
-./node_modules/yarn/bin/yarn run build:linux
+nodejs-yarn run build:linux
 %else
-./node_modules/yarn/bin/yarn run build:linux32
+nodejs-yarn run build:linux32
 %endif
 
 %install
