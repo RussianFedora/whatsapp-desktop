@@ -35,23 +35,14 @@ Web, like a browser.
 # Oh, NodeJS and Yarn, what?
 npm install yarn
 ./node_modules/yarn/bin/yarn install
-./node_modules/yarn/bin/yarn run build:linux
+./node_modules/yarn/bin/yarn run build:linux%{__isa_bits}
 
 %install
 chmod -x readme.md
 
 mkdir -p %{buildroot}%{_libdir}/%{name}
 
-%ifarch x86_64
-cp -r dist/WhatsApp-linux-x64/* %{buildroot}%{_libdir}/%{name}/
-%else
-cp -r dist/WhatsApp-linux-ia32/* %{buildroot}%{_libdir}/%{name}/
-%endif
-
-%if 0%{?fedora} < 27
-cp -r node_modules %{buildroot}%{_libdir}/%{name}/resources/app/
-rm -r %{buildroot}%{_libdir}/%{name}/resources/app/node_modules/electron
-%endif
+cp -r dist/WhatsApp-linux-%{__isa_bits}/* %{buildroot}%{_libdir}/%{name}/
 
 # Remove rpath
 chrpath --delete %{buildroot}%{_libdir}/%{name}/WhatsApp
