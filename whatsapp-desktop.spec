@@ -35,7 +35,11 @@ Web, like a browser.
 # Oh, NodeJS and Yarn, what?
 npm install yarn
 ./node_modules/yarn/bin/yarn install
-./node_modules/yarn/bin/yarn run build:linux%{__isa_bits}
+%ifarch x86_64
+./node_modules/yarn/bin/yarn run build:linux
+%else
+./node_modules/yarn/bin/yarn run build:linux32
+%endif
 
 %install
 chmod -x readme.md
