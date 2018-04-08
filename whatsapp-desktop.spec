@@ -1,6 +1,6 @@
 %global __provides_exclude_from %{_libdir}/%{name}/.*\\.so
 %global privlibs libffmpeg|libnode
-%global __requires_exclude ^(%{privlibs})\\.so
+%global __requires_exclude ^(%{privlibs})\\.so|coffee
 
 # Oh, it fetch some binaries. Fucking nodejs
 %global debug_package %{nil}
@@ -8,7 +8,7 @@
 Summary:	WhatsApp desktop client, based on the official WhatsApp web app
 Name:		whatsapp-desktop
 Version:	0.5.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 
 License:	MIT
 URL:		https://github.com/Enrico204/Whatsapp-Desktop
@@ -114,6 +114,9 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Sun Apr  8 2018 Arkady L. Shane <ashejn@russianfedora.pro> - 0.5.0-2
+- exclude some rave
+
 * Sun Apr  8 2018 Arkady L. Shane <ashejn@russianfedora.pro> - 0.5.0-1
 - update to 0.5.0
 
