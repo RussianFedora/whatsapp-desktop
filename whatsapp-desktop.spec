@@ -7,7 +7,7 @@
 
 Summary:	WhatsApp desktop client, based on the official WhatsApp web app
 Name:		whatsapp-desktop
-Version:	0.4.2
+Version:	0.5.0
 Release:	1%{?dist}
 
 License:	MIT
@@ -114,6 +114,9 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Sun Apr  8 2018 Arkady L. Shane <ashejn@russianfedora.pro> - 0.5.0-1
+- update to 0.5.0
+
 * Sun Jan 14 2018 Arkady L. Shane <ashejn@russianfedora.pro> - 0.4.2-1
 - update to 0.4.2
 - use yarn
